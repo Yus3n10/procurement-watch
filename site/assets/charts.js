@@ -115,7 +115,7 @@ export function columns(el, opts) {
   const options = { height: 260, yFormat: String, ...opts };
   mount(el, options, (root, width) => {
     const data = options.data;
-    const left = 46, right = width - 8, top = options.ceilingLabel ? 30 : 12, bottom = options.height - 26;
+    const left = 46, right = width - 8, top = options.ceilingLabel || options.refLabel ? 30 : 12, bottom = options.height - 26;
     const max = ticks(options.yMax ?? Math.max(...data.map((d) => d.y))).at(-1);
     const scale = yAxis(root, { left, right, top, bottom, max, format: options.yFormat });
     const band = (right - left) / data.length;
@@ -227,7 +227,8 @@ export function lines(el, opts) {
     if (options.hline) {
       const y = scale(options.hline.value);
       root.append(svg("line", { class: "ref-line", x1: left, x2: right, y1: y, y2: y }));
-      root.append(svg("text", { class: "ref-label", x: left + 4, y: y - 5 }, options.hline.label));
+      // Right-aligned: lines usually start low on the left and would cross the label.
+      root.append(svg("text", { class: "ref-label", x: right - 4, y: y - 5, "text-anchor": "end" }, options.hline.label));
     }
     if (options.vline) {
       const vx = px(options.vline.index);
