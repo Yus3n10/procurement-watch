@@ -1,0 +1,28 @@
+{
+  "source": "https://huggingface.co/datasets/bettergovph/philgeps-data",
+  "license": "CC0-1.0",
+  "revision": "b98de579579e8c7e79bac2a22ac7491549db6d0d",
+  "snapshot_date": "2026-01-06",
+  "files": {
+    "philgeps.parquet": {
+      "bytes": 492869009,
+      "sha256": "9bfa9e7cbf5041dc3b51a4c2742e60a43d1615f119955581d4b155bf3a6d4a8b"
+    },
+    "awardees.parquet": {
+      "bytes": 6098906,
+      "sha256": "a422e028f98f8f9a764a8e3de2d7d255637469decc579e144ea0e75e72ef4e1d"
+    },
+    "organizations.parquet": {
+      "bytes": 1304357,
+      "sha256": "d70d005f7018abf500ddf5be7aa53194c96cbfc9cb4341ab08aa047f1306e8f3"
+    },
+    "business_categories.parquet": {
+      "bytes": 10623,
+      "sha256": "da852cc54bdd4dd5a31d57a8dc517260b4de9373ef486e8604677c86328634c5"
+    },
+    "area_of_deliveries.parquet": {
+      "bytes": 27088,
+      "sha256": "dbbf379d251673c48076103213547cb6768ef22f5a96f259f9f80516fcf797e9"
+    }
+  }
+}

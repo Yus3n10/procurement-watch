@@ -1,0 +1,4 @@
+threshold,amount,effective_from,effective_to,applies_to,legal_basis,source
+shopping_unforeseen,200000,2016-10-28,2025-02-24,"NGAs, GOCCs, GFIs, SUCs",RA 9184 2016 IRR Sec. 52.1(a) and Annex H,https://www.coa.gov.ph/wp-content/uploads/ABC-Help/revised_irr-3_AnnexH.pdf
+small_value_procurement,1000000,2016-10-28,2025-02-24,"NGAs, GOCCs, GFIs, SUCs",RA 9184 2016 IRR Sec. 53.9 and Annex H,https://www.coa.gov.ph/wp-content/uploads/ABC-Help/revised_irr-3_AnnexH.pdf
+small_value_procurement,2000000,2025-02-25,,All procuring entities,RA 12009 IRR,https://www.gppb.gov.ph/enhancing-procurement-efficiency-with-small-value-procurement-under-ra-12009/
