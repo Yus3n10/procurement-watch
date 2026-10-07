@@ -16,8 +16,9 @@ data check passes.
   amounts with no rule attached sit at about 2.0. The ceiling is 2.7 times that baseline, up
   from 1.2 in 2010.
 - ₱200,000, another ceiling, shows no excess over the baseline.
-- ₱5,000,000 was first treated as a no-rule amount and spiked like a ceiling. It turned out to
-  be a newspaper-advertising cut-off for infrastructure contracts. It is now classed separately.
+- ₱5,000,000 was first treated as a no-rule amount and spiked like a ceiling. No rule on file
+  explains it: an advertising requirement at that amount ended in 2018, and the bunching grew
+  after 2021. It is reported as unexplained and kept out of the baseline.
 - The ceiling moved to ₱2,000,000 in February 2025. Bunching has not visibly moved with it yet.
 - Nearly half of the raw 2025 value was the same records repeated, some more than 50 times.
 
@@ -56,8 +57,8 @@ are plain Python, because a DuckDB Python function did the same work about 100 t
 name, and a check proves the counts reconcile.
 
 **Placebos before conclusions.** Every ceiling is compared against round amounts with no rule.
-That comparison removed one apparent finding (₱200,000) and exposed a wrong assumption
-(₱5,000,000).
+That comparison removed one apparent finding (₱200,000) and exposed an amount that behaves
+like a ceiling without a known rule (₱5,000,000).
 
 **Rules, not similarity scores, for supplier names.** Each merge records the rule that caused
 it. Scored on 300 sampled name pairs: no wrong merges, 70% of true matches found. The rules

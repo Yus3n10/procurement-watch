@@ -280,11 +280,11 @@ def test_agency_types(make_settings):
     ]
 
 
-def test_amount_kinds_come_from_the_seed_and_other_rules_stay_out_of_the_baseline(make_settings):
+def test_amount_kinds_come_from_the_seed_and_unexplained_amounts_stay_out_of_the_baseline(make_settings):
     specs = []
     specs += [{"contract_amount": 95_000.0}] * 2 + [{"contract_amount": 105_000.0}]  # placebo ratio 2
     specs += [{"contract_amount": 290_000.0}] * 2 + [{"contract_amount": 310_000.0}]  # placebo ratio 2
-    specs += [{"contract_amount": 4_900_000.0}] * 50 + [{"contract_amount": 5_100_000.0}]  # other rule, ratio 50
+    specs += [{"contract_amount": 4_900_000.0}] * 50 + [{"contract_amount": 5_100_000.0}]  # unexplained, ratio 50
     settings = make_settings(awards(specs))
     pipeline.build(settings)
     assert query(
@@ -293,7 +293,7 @@ def test_amount_kinds_come_from_the_seed_and_other_rules_stay_out_of_the_baselin
     ) == [
         (100000, "placebo", 2.0, 2.0),
         (300000, "placebo", 2.0, 2.0),
-        (5000000, "other_rule", 50.0, 2.0),
+        (5000000, "unexplained", 50.0, 2.0),
     ]
 
 

@@ -7,6 +7,6 @@ round_amount,amount_kind,note
 700000,placebo,
 1000000,threshold,Small value procurement ceiling under the 2016 rules
 1500000,placebo,
-2000000,threshold,Small value procurement ceiling from 25 February 2025. Also an older newspaper advertising cut-off for goods
+2000000,threshold,Small value procurement ceiling from 25 February 2025
 3000000,placebo,
-5000000,other_rule,Newspaper advertising cut-off for infrastructure under the earlier rules. Not a ceiling on alternative methods and not a placebo
+5000000,unexplained,Bunches like a ceiling but no rule on file accounts for it. Kept out of the no-rule baseline

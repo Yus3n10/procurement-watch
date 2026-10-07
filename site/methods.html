@@ -32,6 +32,7 @@
   </ul>
 
   <h2>Cleaning</h2>
+  <p>Awards above ten billion pesos are kept only after the amount is matched to a public report of the contract. The rest stay set aside, so the largest contracts are undercounted.</p>
   <p>Every raw record is either kept or set aside with a reason. The <a href="quality.html">data quality page</a> lists the reasons and counts. Records identical in every column are collapsed to one. That would also collapse two separate awards that happen to match exactly, which is rare but possible.</p>
   <p>Names are folded to a plain form before comparison. Letters from the Greek and Cyrillic alphabets that look identical to Latin ones are mapped back, accents are removed, and leftover web codes such as <code>&amp;amp;</code> are decoded. Agencies are then matched on that folded name alone.</p>
   <p>Supplier names go through three more rules: punctuation and initials are standardised, a branch such as “Company Inc. - Makati” is folded into “Company Inc.” when that parent appears under its own name, and the legal form is dropped. Government field offices that appear as suppliers are not merged.</p>
@@ -44,7 +45,7 @@
 
   <h2>The ceilings on file</h2>
   <div id="thresholds"></div>
-  <p class="small">Local governments had lower ceilings under the 2016 rules, set by income class. Those are not modelled. The 2016 start date is taken from when the revised rules came into force and has not been checked against an official notice.</p>
+  <p class="small">Local governments had lower ceilings under the 2016 rules, set by income class. Those are not modelled. The 2016 rules took effect on 28 October 2016, sixty days after publication.</p>
 
   <h2 id="same-day">Same-day groups</h2>
   <p>A group is at least <span data-fill="min-notices">3</span> separate notices from one agency to one supplier on one day, where each notice is within the small value ceiling in force that day and together they exceed it. Records sharing a reference number are lots of one notice and count once. Records with no reference number are left out, which removes most of 2025.</p>

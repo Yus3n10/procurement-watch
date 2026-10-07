@@ -145,7 +145,7 @@ async function overview(summary) {
 
 const KIND = {
   threshold: { color: "var(--series-1)", name: "A ceiling on simplified procurement" },
-  other_rule: { color: "var(--series-2)", name: "A different rule sits here" },
+  unexplained: { color: "var(--series-2)", name: "Bunches like a ceiling, with no rule found" },
   placebo: { color: "var(--neutral-mark)", name: "No rule: an ordinary round amount" },
 };
 
@@ -437,7 +437,7 @@ async function methods(summary) {
   set("[data-fill=min-listed]", summary.settings.min_agency_awards_listed);
   set("[data-fill=snapshot]", summary.snapshot_date);
   table($("#amounts"), [{ label: "Amount" }, { label: "Treated as" }, { label: "Why" }],
-    summary.amounts.map((a) => [peso(a.round_amount), { threshold: "Ceiling", other_rule: "Other rule", placebo: "No rule" }[a.amount_kind], esc(a.note || "Round amount with no rule found")]));
+    summary.amounts.map((a) => [peso(a.round_amount), { threshold: "Ceiling", unexplained: "Unexplained", placebo: "No rule" }[a.amount_kind], esc(a.note || "Round amount with no rule found")]));
   table($("#thresholds"), [{ label: "Ceiling" }, { label: "Amount", n: 1 }, { label: "From" }, { label: "Until" }, { label: "Basis" }],
     summary.thresholds.map((t) => [t.threshold.replaceAll("_", " "), peso(t.amount), t.effective_from, t.effective_to || "in force", `<a href="${t.source}">${esc(t.legal_basis)}</a>`]));
 }

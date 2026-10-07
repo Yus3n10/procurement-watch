@@ -237,7 +237,7 @@ CHECKS = [
                  where g.round_amount = t.amount and g.amount_kind = 'threshold'))
           + cast((select count(*) from analysis_amounts where amount_kind = 'placebo') < 3 as integer)
           + (select count(*) from analysis_amounts
-             where amount_kind not in ('threshold', 'placebo', 'other_rule'))
+             where amount_kind not in ('threshold', 'placebo', 'unexplained'))
         """,
     ),
     Check(
