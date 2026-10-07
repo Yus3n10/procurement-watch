@@ -58,9 +58,10 @@ function table(el, head, body) {
 }
 
 function chrome(summary) {
-  const here = location.pathname.split("/").pop() || "index.html";
-  const active = here === "agency.html" ? "agencies.html" : here;
-  const links = PAGES.map(([href, label]) => `<a href="${href}"${href === active ? ' aria-current="page"' : ""}>${label}</a>`).join("");
+  // Some hosts serve /patterns for patterns.html, so compare without the extension.
+  const here = (location.pathname.split("/").pop() || "index").replace(/\.html$/, "");
+  const active = here === "agency" ? "agencies" : here;
+  const links = PAGES.map(([href, label]) => `<a href="${href}"${href === `${active}.html` ? ' aria-current="page"' : ""}>${label}</a>`).join("");
   $("#masthead").innerHTML = `<div class="wrap"><a class="brand" href="index.html">Procurement Watch</a><nav aria-label="Sections">${links}</nav></div>`;
   $("#footer").innerHTML = `<div class="wrap">
     <p>Every figure describes award records as published on PhilGEPS and republished by BetterGov.PH under CC0. A high value marks a pattern worth a closer look. It is not evidence of wrongdoing by any agency.</p>
