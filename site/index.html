@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Procurement Watch</title>
+<meta name="description" content="Patterns in 5 million Philippine government procurement awards, with every data check shown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="overview">
+<header class="masthead" id="masthead"></header>
+<main>
+<div class="wrap">
+  <section class="hero">
+    <h1>Just under the line</h1>
+    <p class="lede">In <span data-fill="year">2024</span>, Philippine government agencies published <span class="num" data-fill="under">…</span> awards worth between ₱900,000 and ₱1,000,000, and <span class="num" data-fill="over">…</span> worth between ₱1,000,000 and ₱1,100,000. One million pesos was the most an agency could spend through small value procurement, which skips public bidding.</p>
+    <div class="cliffs">
+      <div class="box">
+        <span class="field">With a ceiling</span>
+        <h3>Awards around ₱1,000,000</h3>
+        <p class="small">The count climbs for five steps before the ceiling, then drops from <span class="num" data-fill="last-ceiling">…</span> to <span class="num" data-fill="next-ceiling">…</span>.</p>
+        <div id="cliff-ceiling"><p class="loading">Loading the records…</p></div>
+      </div>
+      <div class="box">
+        <span class="field">Without one</span>
+        <h3>Awards around ₱1,500,000</h3>
+        <p class="small">No rule sits here. There is still a spike at the round number, <span class="num" data-fill="last-placebo">…</span> to <span class="num" data-fill="next-placebo">…</span>, but no climb before it.</p>
+        <div id="cliff-placebo"></div>
+      </div>
+    </div>
+    <p class="small">Each bar is a 1% step in contract amount, on the same scale in both charts. An award made at exactly the amount sits in the bar to its left.</p>
+    <p class="caveat">Awards cluster under every round number, because budgets are set in round numbers. That is why each amount with a rule is measured against amounts without one. Over the full 10% band, ₱1,000,000 has <span class="num" data-fill="ratio">…</span> awards just under for every one just over. Amounts with no rule have about <span class="num" data-fill="placebo">…</span>. <a href="patterns.html">See all four patterns</a>.</p>
+  </section>
+
+  <div class="grid">
+    <div class="box span-4"><span class="field">Awards kept</span><div class="figure" data-fill="awards">…</div><p class="small">Published from <span data-fill="span">…</span>, after cleaning.</p></div>
+    <div class="box span-4"><span class="field">Agencies</span><div class="figure" data-fill="agencies">…</div><p class="small">From barangays to national departments. <a href="agencies.html">Find one</a>.</p></div>
+    <div class="box span-4"><span class="field">Records set aside</span><div class="figure" data-fill="quarantined">…</div><p class="small">Each with a stated reason. <span data-fill="checks">…</span> checks must pass before anything is published. <a href="quality.html">See them</a>.</p></div>
+  </div>
+
+  <div class="grid">
+    <div class="box span-6"><span class="field">Volume</span><h3>Awards published per year</h3><div id="yearly-awards"></div></div>
+    <div class="box span-6"><span class="field">Value</span><h3>Pesos awarded per year</h3><div id="yearly-value"></div><p class="small">The last year is incomplete: the snapshot was taken while agencies were still posting.</p></div>
+  </div>
+</div>
+</main>
+<footer id="footer"></footer>
+<noscript><div class="wrap"><p>This site draws its figures in the browser and needs JavaScript.</p></div></noscript>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

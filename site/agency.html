@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agency · Procurement Watch</title>
+<meta name="description" content="Procurement award patterns for one agency, by year.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="agency">
+<header class="masthead" id="masthead"></header>
+<main>
+<div class="wrap" id="agency-body">
+  <div class="page-head">
+    <p class="small"><a href="agencies.html">All agencies</a></p>
+    <h1 class="agency-name" data-fill="name">…</h1>
+    <p data-fill="kind"></p>
+  </div>
+  <div class="grid">
+    <div class="box span-4"><span class="field">Awards</span><div class="figure" data-fill="awards">…</div><p class="small" data-fill="years"></p></div>
+    <div class="box span-4"><span class="field">Value</span><div class="figure" data-fill="value">…</div><p class="small">Total of published contract amounts.</p></div>
+    <div class="box span-4"><span class="field">Same-day groups</span><div class="figure" data-fill="groups">…</div><p class="small">Across all years. <a href="methods.html#same-day">What counts as a group</a>.</p></div>
+  </div>
+  <div class="grid">
+    <div class="box span-6"><span class="field">Volume</span><h3>Awards per year</h3><div id="agency-awards"></div></div>
+    <div class="box span-6"><span class="field">Concentration</span><h3>Largest supplier's share of spending</h3><div id="agency-share"></div><p class="small">Years with fewer than 30 awards are left blank.</p></div>
+  </div>
+  <div class="box">
+    <span class="field">Year by year</span>
+    <div id="agency-years"><p class="loading">Loading the records…</p></div>
+    <p class="caveat">These are counts from published records. They describe a pattern and do not show that anything improper happened.</p>
+  </div>
+</div>
+</main>
+<footer id="footer"></footer>
+<noscript><div class="wrap"><p>This site draws its figures in the browser and needs JavaScript.</p></div></noscript>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

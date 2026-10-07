@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methods · Procurement Watch</title>
+<meta name="description" content="How Procurement Watch cleans the award records and computes each pattern, and what the data cannot show.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="methods">
+<header class="masthead" id="masthead"></header>
+<main>
+<div class="wrap prose">
+  <div class="page-head">
+    <h1>Methods</h1>
+    <p class="lede">How the records are cleaned, how each figure is computed, and what this data cannot tell you.</p>
+  </div>
+
+  <h2>Where the records come from</h2>
+  <p>The Philippine Government Electronic Procurement System, PhilGEPS, publishes notices of award. BetterGov.PH, a volunteer group, republishes them as open files under a CC0 licence. This site reads one fixed copy of those files, dated <span data-fill="snapshot">…</span>, and checks each file against a recorded checksum before using it.</p>
+
+  <h2>What the records leave out</h2>
+  <ul>
+    <li>How many suppliers bid. Single-bidder contracts cannot be identified.</li>
+    <li>The procurement method. An award cannot be labelled as public bidding or small value procurement.</li>
+    <li>The approved budget. Awards cannot be compared with what was budgeted.</li>
+    <li>A supplier identifier. Suppliers are known only by how their name was typed.</li>
+    <li>Awards an agency never posted. Posting is uneven across agencies and years.</li>
+  </ul>
+
+  <h2>Cleaning</h2>
+  <p>Every raw record is either kept or set aside with a reason. The <a href="quality.html">data quality page</a> lists the reasons and counts. Records identical in every column are collapsed to one. That would also collapse two separate awards that happen to match exactly, which is rare but possible.</p>
+  <p>Names are folded to a plain form before comparison. Letters from the Greek and Cyrillic alphabets that look identical to Latin ones are mapped back, accents are removed, and leftover web codes such as <code>&amp;amp;</code> are decoded. Agencies are then matched on that folded name alone.</p>
+  <p>Supplier names go through three more rules: punctuation and initials are standardised, a branch such as “Company Inc. - Makati” is folded into “Company Inc.” when that parent appears under its own name, and the legal form is dropped. Government field offices that appear as suppliers are not merged.</p>
+
+  <h2 id="bunching">Bunching</h2>
+  <p>For an amount, “just under” means from <span data-fill="band">10%</span> below it up to and including the amount. “Just over” means above it by up to <span data-fill="band">10%</span>. An award at exactly the amount counts as under, because the rules say a contract must not exceed the ceiling.</p>
+  <p>Awards cluster under every round number, with or without a rule. So the ratio at each ceiling is divided by the median ratio at round amounts that have no rule. A result of 1 means no more bunching than a round number produces by itself.</p>
+  <div id="amounts"></div>
+  <p class="small">An agency's own bunching figure is shown only when it has at least <span data-fill="min-band">30</span> awards in the band that year.</p>
+
+  <h2>The ceilings on file</h2>
+  <div id="thresholds"></div>
+  <p class="small">Local governments had lower ceilings under the 2016 rules, set by income class. Those are not modelled. The 2016 start date is taken from when the revised rules came into force and has not been checked against an official notice.</p>
+
+  <h2 id="same-day">Same-day groups</h2>
+  <p>A group is at least <span data-fill="min-notices">3</span> separate notices from one agency to one supplier on one day, where each notice is within the small value ceiling in force that day and together they exceed it. Records sharing a reference number are lots of one notice and count once. Records with no reference number are left out, which removes most of 2025.</p>
+  <p>Ordinary explanations exist: a framework agreement drawn down in several orders, deliveries to several offices, or a posting backlog cleared in one sitting.</p>
+
+  <h2>Supplier concentration</h2>
+  <p>For each agency and year, the largest supplier's share is that supplier's contract value divided by the agency's total. It is shown only for years with at least <span data-fill="min-year">30</span> awards. A high share is normal for an agency with one large project, a utility contract, or a sole distributor.</p>
+
+  <h2>Why suppliers are not named</h2>
+  <p>Agencies are public bodies and are named. Suppliers are often small businesses, and a name next to a statistical pattern reads as an accusation whatever the caption says. Supplier matching is also imperfect. Supplier figures are therefore published only as counts and shares.</p>
+
+  <h2>Which agencies are listed</h2>
+  <p>An agency gets its own page once it has at least <span data-fill="min-listed">100</span> awards across all years. That covers about 95% of all awards.</p>
+
+  <h2>Rebuilding it yourself</h2>
+  <p>One command rebuilds every table from the raw files, and running it twice gives identical output. The site is published only if every blocking check passes.</p>
+</div>
+</main>
+<footer id="footer"></footer>
+<noscript><div class="wrap"><p>This site draws its figures in the browser and needs JavaScript.</p></div></noscript>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

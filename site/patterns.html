@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterns · Procurement Watch</title>
+<meta name="description" content="Four patterns in Philippine procurement awards: threshold bunching, the 2025 rule change, repeat same-day awards and supplier concentration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="patterns">
+<header class="masthead" id="masthead"></header>
+<main>
+<div class="wrap">
+  <div class="page-head">
+    <h1>Patterns</h1>
+    <p class="lede">Four ways of reading the same award records. Each one is a count, set beside something to compare it with.</p>
+    <p class="caveat">None of these is a finding against an agency. Many ordinary reasons produce the same numbers, and the records leave out how many bidders took part and which procurement method was used.</p>
+  </div>
+
+  <div class="box">
+    <span class="field">Bunching</span>
+    <h2>How many awards land just under an amount</h2>
+    <p>For each amount, count the awards up to 10% below it and the awards up to 10% above it, then divide. Grey bars are round amounts with no rule attached. They show what round numbers do by themselves.</p>
+    <div class="controls"><label>Year<select id="bunching-year"></select></label></div>
+    <div id="bunching-amounts"><p class="loading">Loading the records…</p></div>
+    <p class="small">₱5,000,000 behaves like a ceiling but is a different kind of rule: under earlier regulations, infrastructure contracts above it had to be advertised in a national newspaper.</p>
+  </div>
+
+  <div class="grid">
+    <div class="box span-7">
+      <span class="field">Bunching over time</span>
+      <h3>₱1,000,000 against the no-rule level</h3>
+      <div id="bunching-trend"></div>
+    </div>
+    <div class="box span-5">
+      <span class="field">By kind of agency, 2024</span>
+      <h3>Who lands just under ₱1,000,000</h3>
+      <div id="bunching-types"></div>
+      <p class="small">Local governments had lower ceilings depending on income class, so ₱1,000,000 did not bind all of them.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="field">Rule change</span>
+    <h2>The ceiling moved to ₱2,000,000 in February 2025</h2>
+    <p>If agencies steer contracts under a ceiling, bunching should fade at ₱1,000,000 and grow at ₱2,000,000 once the new rules took effect. So far it has done neither clearly.</p>
+    <div id="rule-monthly"></div>
+    <div id="rule-summary"></div>
+    <p class="small">2025 is a partial year, and most 2025 records arrived through a different export. Months with fewer than 20 awards just over ₱2,000,000 are left off the chart.</p>
+  </div>
+
+  <div class="grid">
+    <div class="box span-6">
+      <span class="field">Same day</span>
+      <h3>Several notices, one supplier, one day</h3>
+      <p class="small">A group is three or more separate notices from one agency to one supplier on one day, each within the ceiling in force, adding up to more than it.</p>
+      <div id="same-day"></div>
+      <p class="small">Only records with a reference number are counted, since without one a notice cannot be told apart from a lot. That removes most of 2025. No ceiling is on file before late 2016.</p>
+    </div>
+    <div class="box span-6">
+      <span class="field">Concentration</span>
+      <h3>The largest supplier's share of an agency's spending</h3>
+      <p class="small">The line is the median agency. The shaded band holds the middle half. Agencies with fewer than 30 awards in a year are left out.</p>
+      <div id="concentration"></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="field">By agency</span>
+    <h2>Where each pattern is strongest</h2>
+    <p>The 50 agencies with the highest count for a pattern in one year. Large agencies appear because they publish more, so read the count beside the agency's total.</p>
+    <div class="controls"><label>Year<select id="rank-year"></select></label></div>
+    <div class="tabs" id="rank-tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-pattern="bunching_1m">Just under ₱1,000,000</button>
+      <button role="tab" aria-selected="false" data-pattern="same_day">Same-day groups</button>
+      <button role="tab" aria-selected="false" data-pattern="concentration">Largest supplier's share</button>
+    </div>
+    <div id="rank-table"></div>
+  </div>
+</div>
+</main>
+<footer id="footer"></footer>
+<noscript><div class="wrap"><p>This site draws its figures in the browser and needs JavaScript.</p></div></noscript>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agencies · Procurement Watch</title>
+<meta name="description" content="Search Philippine government agencies and see their procurement award patterns by year.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="agencies">
+<header class="masthead" id="masthead"></header>
+<main>
+<div class="wrap">
+  <div class="page-head">
+    <h1>Agencies</h1>
+    <p class="lede">Every procuring entity with at least 100 published awards. Suppliers are not named anywhere on this site.</p>
+  </div>
+  <div class="box">
+    <span class="field">Find an agency</span>
+    <div class="controls">
+      <label>Name contains<input type="search" id="agency-search" placeholder="Talisay, hospital, DPWH…" autocomplete="off"></label>
+      <label>Kind<select id="agency-type"></select></label>
+    </div>
+    <p class="small" id="agency-count"></p>
+    <div id="agency-table"><p class="loading">Loading the agencies…</p></div>
+  </div>
+</div>
+</main>
+<footer id="footer"></footer>
+<noscript><div class="wrap"><p>This site draws its figures in the browser and needs JavaScript.</p></div></noscript>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>
