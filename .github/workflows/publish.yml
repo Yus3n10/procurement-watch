@@ -1,0 +1,56 @@
+name: publish
+
+# Rebuilds everything from the pinned raw snapshot and publishes the site to
+# Cloudflare Pages. The export step refuses to run if any blocking data check
+# failed, so a bad build can never replace the live site.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 18 * * 0" # Mondays 02:00 in Manila
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  PAGES_PROJECT: procurement-watch
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: python -m pytest -q
+      - name: Restore the raw snapshot
+        uses: actions/cache@v4
+        with:
+          path: data/raw
+          key: raw-${{ hashFiles('seeds/raw_manifest.json') }}
+      - name: Fetch and verify the raw snapshot
+        run: python -m pw fetch
+      - name: Build the warehouse and run the data checks
+        run: python -m pw build
+      - name: Export the site data
+        run: python -m pw export
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data-quality-report
+          path: build/dq_report.json
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        # Without the two secrets the build above still runs and reports,
+        # and the deploy is skipped instead of failing the scheduled run.
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
+        run: |
+          npx --yes wrangler@4 pages project create "$PAGES_PROJECT" --production-branch main || true
+          npx --yes wrangler@4 pages deploy site --project-name "$PAGES_PROJECT" --branch main --commit-dirty=true
